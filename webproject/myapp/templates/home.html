@@ -1,116 +1,4 @@
 {% extends "base.html" %} {% block content %}
-<style media="screen">
-.navbar-brand {
-    position: relative;
-    z-index: 2;
-}
-
-.navbar-nav.navbar-right .btn {
-    position: relative;
-    z-index: 2;
-    padding: 4px 20px;
-    margin: 10px auto;
-    transition: transform 0.3s;
-}
-
-.navbar .navbar-collapse {
-    position: relative;
-    overflow: hidden !important;
-}
-
-.navbar .navbar-collapse .navbar-right > li:last-child {
-    padding-left: 22px;
-}
-
-.navbar .nav-collapse {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding-right: 120px;
-    padding-left: 80px;
-    width: 100%;
-}
-
-.navbar.navbar-default .nav-collapse {
-    background-color: #f8f8f8;
-}
-
-.navbar.navbar-inverse .nav-collapse {
-    background-color: #222;
-}
-
-.navbar .nav-collapse .navbar-form {
-    border-width: 0;
-    box-shadow: none;
-}
-
-.nav-collapse>li {
-    float: right;
-}
-
-.btn.btn-circle {
-    border-radius: 50px;
-}
-
-.btn.btn-outline {
-    background-color: transparent;
-}
-
-.navbar-nav.navbar-right .btn:not(.collapsed) {
-    background-color: rgb(111, 84, 153);
-    border-color: rgb(111, 84, 153);
-    color: rgb(255, 255, 255);
-}
-
-.navbar.navbar-default .nav-collapse,
-.navbar.navbar-inverse .nav-collapse {
-    height: auto !important;
-    transition: transform 0.3s;
-    transform: translate(0px, -50px);
-}
-
-.navbar.navbar-default .nav-collapse.in,
-.navbar.navbar-inverse .nav-collapse.in {
-    transform: translate(0px, 0px);
-}
-
-@media screen and (max-width: 767px) {
-    .navbar .navbar-collapse .navbar-right > li:last-child {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    .navbar .nav-collapse {
-        margin: 7.5px auto;
-        padding: 0;
-    }
-    .navbar .nav-collapse .navbar-form {
-        margin: 0;
-    }
-    .nav-collapse>li {
-        float: none;
-    }
-    .navbar.navbar-default .nav-collapse,
-    .navbar.navbar-inverse .nav-collapse {
-        transform: translate(-100%, 0px);
-    }
-    .navbar.navbar-default .nav-collapse.in,
-    .navbar.navbar-inverse .nav-collapse.in {
-        transform: translate(0px, 0px);
-    }
-    .navbar.navbar-default .nav-collapse.slide-down,
-    .navbar.navbar-inverse .nav-collapse.slide-down {
-        transform: translate(0px, -100%);
-    }
-    .navbar.navbar-default .nav-collapse.in.slide-down,
-    .navbar.navbar-inverse .nav-collapse.in.slide-down {
-        transform: translate(0px, 0px);
-    }
-}
-</style>
 <!-- carousel -->
 <!-- <div id="wrapper">
     <div id="carousel">
@@ -123,61 +11,172 @@
     <a href="#" id="next" title="Show next"> </a>
     <div id="pager"></div>
 </div> -->
-<!-- end carousel -->
-<div style="background-color: black" class="container-fluid">
-    <!-- Second navbar for categories -->
-    <!-- Second navbar for search -->
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-3">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Brand</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="navbar-collapse-3">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Works</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li>
-                        <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse3" aria-expanded="false" aria-controls="nav-collapse3">Search</a>
-                    </li>
-                </ul>
-                <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse3">
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search" />
-                        </div>
-                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </form>
+<style>
+body,
+html {
+    background: #030321;
+    /*font-family: Arial;*/
+}
+
+a {
+    font-size: 20px;
+}
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+<!--  
+        If you want to change #bootstrap-touch-slider id then you have to change Carousel-indicators and Carousel-Control  #bootstrap-touch-slider slide as well
+        Slide effect: slide, fade
+        Text Align: slide_style_center, slide_style_left, slide_style_right
+        Add Text Animation: https://daneden.github.io/animate.css/
+        -->
+<div id="bootstrap-touch-slider" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper For Slides -->
+    <div class="carousel-inner" role="listbox">
+        <!-- Third Slide -->
+        <div class="item active">
+            <!-- Slide Background -->
+            <img src="https://images.pexels.com/photos/48726/pexels-photo-48726.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider" class="slide-image" />
+            <div class="bs-slider-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <!-- Slide Text Layer -->
+                    <div class="slide-text slide_style_left">
+                        <h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>
+                        <p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>
+                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
+                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>
+                    </div>
                 </div>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
-    <!-- /.navbar -->
+        <!-- End of Slide -->
+        <!-- Second Slide -->
+        <div class="item">
+            <!-- Slide Background -->
+            <img src="https://images.pexels.com/photos/207990/pexels-photo-207990.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider" class="slide-image" />
+            <div class="bs-slider-overlay"></div>
+            <!-- Slide Text Layer -->
+            <div class="slide-text slide_style_center">
+                <h1 data-animation="animated flipInX">Bootstrap touch slider</h1>
+                <p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>
+                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>
+                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">select two</a>
+            </div>
+        </div>
+        <!-- End of Slide -->
+        <!-- Third Slide -->
+        <div class="item">
+            <!-- Slide Background -->
+            <img src="https://images.pexels.com/photos/144345/pexels-photo-144345.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider" class="slide-image" />
+            <div class="bs-slider-overlay"></div>
+            <!-- Slide Text Layer -->
+            <div class="slide-text slide_style_right">
+                <h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>
+                <p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>
+                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
+                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>
+            </div>
+        </div>
+        <!-- End of Slide -->
+    </div>
+    <!-- End of Wrapper For Slides -->
+    <!-- Left Control -->
+    <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+        <span class="fa fa-angle-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <!-- Right Control -->
+    <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+        <span class="fa fa-angle-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
+<!-- End  bootstrap-touch-slider Slider -->
+<!-- end carousel -->
+<!-- <div style="background-color: black" class="container-fluid"> -->
+<!-- Second navbar for categories -->
+<!-- Second navbar for search -->
+<!-- Second navbar for sign in -->
+<nav class="navbar navbar-inverse" style="border-radius: 0;background-color: black">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Works</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+                <li>
+                    <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+                </li>
+            </ul>
+            <div style="background-color: black" class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+                <form class="navbar-form navbar-right form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email" placeholder="Email" autofocus required />
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="Password">Password</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Password" required />
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- /.navbar -->
+<!-- </div> -->
 <!-- /.container-fluid <-->
 <div class="container">
-    <div style="background-color: black;height: 50%">
-        <h1>Event</h1></div>
     <br>
     <div class="row">
+        <!--   <div class="col-md-5" style="background-color: black;width: 550px;margin-right: 35px;" >
+            <h1>Event</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+      
         <div class="col-md-6" style="background-color: black">
-            <h1>Event</h1></div>
-        <div class="col-md-6" style="background-color: black">
-            <h1>Event</h1></div>
+            <h1>Event</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>   -->
+        <div class="col-md-3" style="background-color: black;margin-right: 30px;width: 30%">
+            <h1>Event</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="col-md-3" style="background-color: black;margin-right:30px;width: 30%">
+            <h1>Event</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="col-md-3" style="background-color: black;margin-right: 30px;width: 32%">
+            <h1>Event</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
     </div>
+    <br>
+    <br>
 </div>
 {% endblock content %} {% block script %}
 <script type="text/javascript">
