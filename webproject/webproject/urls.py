@@ -19,8 +19,9 @@ from myapp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-    url(r'^addEvent', views.addEvent, name='addEvent'),
-    url(r'^test/$', views.UploadImg, name='imageupload'),
+    url(r'^addEvent/$', views.UploadImg, name='imageupload'),
+    url(r'^event/(?P<pk>[0-9]+)$', views.UpdateEventView.as_view()),
+    url(r'^person_list/$', views.ListEventView.as_view(), name='person_list'),
     url(r'^login/', views.auth, name='auth'),
     url(r'^logout/', views.log_out, name='logout'),
 ]

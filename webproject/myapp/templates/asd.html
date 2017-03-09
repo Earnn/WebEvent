@@ -1,0 +1,172 @@
+{% extends "base.html" %} {% block content %}
+<style>
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload {
+    width: 100%;
+}
+</style>
+<div ng-app="eventApp" ng-controller="addEventCtrl">
+    <h1>Add Your Event</h1>
+    <style>
+    label {
+        font-size: 17px;
+    }
+    </style>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-1"> </div>
+            <div class="col-md-5">
+                <!-- <div class="container"> -->
+                <div class="form-group ">
+                    <label>Name</label>
+                    <input class="form-control" type="text" value="" ng-model="eventInfo.name" id="example-text-input">
+                </div>
+                <!--  <label class="btn btn-default btn-file">
+                    Browse
+                    <input type="file" hidden>
+                </label> -->
+                <div class="form-group">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp">
+                </span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+                    <img id='img-upload' />
+                </div>
+                <form action="#" method="post" enctype="multipart/form-data">
+                    {% csrf_token %} {{form}}
+                    <input type="submit" value="Upload" />
+                </form>
+            </div>
+            <div class="col-md-5">
+                <!-- <div class="container"> -->
+                <label for="example-email-input">Message</label>
+                <div class="form-group ">
+                    <textarea ng-model="eventInfo.msg" class="form-control" rows="12"></textarea>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <center>
+        <button type="button" class="btn btn-block" ng-click="my_click()" style="width: 100px;">
+            Submit
+        </button>
+    </center>
+</div>
+{% endblock content %} {% block script %}
+<script>
+var app = angular.module('eventApp', []) //
+app.config(function($httpProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+});
+app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
+
+app.controller('addEventCtrl', function($scope, $http) {
+
+    angular.element(document).ready(function() {
+
+        $scope.eventInfo = {
+            name: undefined,
+            msg: undefined,
+            image: undefined
+
+
+        }
+
+        $(document).ready(function() {
+            $(document).on('change', '.btn-file :file', function() {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+
+                $scope.eventInfo.image = label;
+                console.log("urlthis: " + $scope.eventInfo.image);
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function(event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if (input.length) {
+                    input.val(log);
+
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#img-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                    // console.log("urlthis: " + $scope.eventInfo.image);
+                }
+            }
+
+            $("#imgInp").change(function() {
+                readURL(this);
+
+            });
+        });
+        console.log("eventInfo: " + $scope.eventInfo.image);
+        var a = document.getElementById("imgInp");
+        console.log("a: " + a);
+        $scope.my_click = function() {
+
+            var data = {
+                name: $scope.eventInfo.name,
+                msg: $scope.eventInfo.msg,
+                image: $scope.eventInfo.image
+            }
+
+
+            console.log("image: " + data.image);
+
+            $http.post("{% url 'addEvent' %}", data)
+                .success(function(response) {
+                    console.log("success");
+                })
+                .error(function(response) {
+                    console.log("failed");
+                })
+        }
+    });
+});
+</script>{% endblock script %}

@@ -169,6 +169,7 @@ p{
     <div class="row">
         {% for event in event_list %}
         <div class="col-md-3" style="background-color: black;margin-right: 30px;width: 30%;margin-bottom: 20px">
+        <a href="/event/{{event.pk}}" class="thumbnail"></a>
             <h1>{{event.title}}</h1>
             <center><img src="{{ event.pic.url }}" height="250" width="320"></center>
            <br> <p>{{event.content}}</p>

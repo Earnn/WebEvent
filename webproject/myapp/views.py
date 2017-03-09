@@ -23,33 +23,38 @@ def base(request):
 	return render(request, 'base.html', {'key': "value" })
 
 
-def addEvent(request): 
-	if request.method == 'POST':
-		img = UploadForm(request.POST, request.FILES)
-		if img.is_valid():
-			img.save()           
-        # if img.is_valid():
-		# name = request.POST.get('name','')
-		# messenger = request.POST.get('messenger','')
-		# create_date = request.POST.get('created_event','')
-		print request;
-		print "request.bod: %s"%request.body;
-		a=json.loads(request.body)
-		print a 
-		print type(a)
-		print a['msg'];
-		print a['name'];
-		s = Event(name=a['name'],message=a['msg'],pic=img);
-		if s:
-			s.save();
-			print "valid";
-			return HttpResponseRedirect('/')
-	else:
-		 images=Upload.objects.all()
-		 img=UploadForm()
-	return render(request, 'addEvent.html',{'images':images})
+# def addEvent(request): 
+# 	if request.method == 'POST':
+# 		img = UploadForm(request.POST, request.FILES)
+# 		if img.is_valid():
+# 			img.save()           
+      
+# 		print request;
+# 		print "request.bod: %s"%request.body;
+# 		a=json.loads(request.body)
+# 		print a 
+# 		print type(a)
+# 		print a['msg'];
+# 		print a['name'];
+# 		s = Event(name=a['name'],message=a['msg'],pic=img);
+# 		if s:
+# 			s.save();
+# 			print "valid";
+# 			return HttpResponseRedirect('/')
+# 	else:
+# 		 images=Upload.objects.all()
+# 		 img=UploadForm()
+# 	return render(request, 'addEvent.html',{'images':images})
    
-	
+class UpdateEventView(UpdateView):
+	queryset = Event.objects.all()
+	template_name='addEvent.html'
+	form_class = UploadForm
+	success_url = '/'
+
+class ListEventView(ListView):
+    model = Event
+    template_name='event_list.html'	
 
 def UploadImg(request):
     if request.method=="POST":
@@ -61,7 +66,7 @@ def UploadImg(request):
     else:
         event=UploadForm()
     images=Upload.objects.all()
-    return render(request,'test.html',{'form':event,'images':images })	
+    return render(request,'addEvent.html',{'form':event,'images':images })	
   
 
 def auth(request):
