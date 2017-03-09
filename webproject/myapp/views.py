@@ -11,10 +11,10 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.context_processors import csrf
 # Create your views here.
 def home(request):
-	image_list = Event.objects.all()
-	print image_list;
+	event_list = Event.objects.all()
+	print event_list;
 	return render(request, 'home.html', {
-			'image_list': image_list,
+			'event_list': event_list,
 			
 		
 			 })
@@ -53,14 +53,15 @@ def addEvent(request):
 
 def UploadImg(request):
     if request.method=="POST":
-        img = UploadForm(request.POST, request.FILES)       
-        if img.is_valid():
-            img.save()  
+        event = UploadForm(request.POST, request.FILES)       
+        if event.is_valid():
+            event.save() 
+            print "success" 
             return HttpResponseRedirect('/')
     else:
-        img=UploadForm()
+        event=UploadForm()
     images=Upload.objects.all()
-    return render(request,'test.html',{'form':img,'images':images })	
+    return render(request,'test.html',{'form':event,'images':images })	
   
 
 def auth(request):
