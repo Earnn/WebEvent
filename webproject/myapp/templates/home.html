@@ -24,6 +24,7 @@ a {
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+
 <!--  
         If you want to change #bootstrap-touch-slider id then you have to change Carousel-indicators and Carousel-Control  #bootstrap-touch-slider slide as well
         Slide effect: slide, fade
@@ -125,23 +126,54 @@ a {
                 <li><a href="#">Works</a></li>
                 <li><a href="#">News</a></li>
                 <li><a href="#">Contact</a></li>
-                <li>
-                    <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Sign in</a>
+                <li> {% if not user.is_authenticated %}
+                    <a id="cancel" class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse1" aria-expanded="false" aria-controls="nav-collapse2">Login</a>
+
+                    {% else %}
+                           
+                        <form  action="{% url 'logout' %}" class="navbar-form navbar-right form-inline" role="form"> 
+                        {% csrf_token %}
+                        <div class="form-group">
+                             <p style="color:white">{{ user.username }}</p>     
+                           
+                        </div>           
+                   
+                   
+                        <button type="submit" style="color: white" class="btn btn-default btn-outline btn-circle collapsed">Logout</button>
+                        </form>
+ 
+                     
+
+                    {% endif %}
                 </li>
             </ul>
-            <div style="background-color: black" class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
-                <form class="navbar-form navbar-right form-inline" role="form">
-                    <div class="form-group">
-                        <label class="sr-only" for="Email">Email</label>
-                        <input type="email" class="form-control" id="Email" placeholder="Email" autofocus required />
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="Password">Password</label>
-                        <input type="password" class="form-control" id="Password" placeholder="Password" required />
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
+      
+            
+
+            <div style="background-color: black" class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse1">
+                
+            {% if not user.is_authenticated %}              
+
+        
+                <form action="{% url 'auth' %}" method="post" class="navbar-form navbar-right form-inline" role="form"> 
+        
+                    {% csrf_token %}
+                       
+                         <div class="form-group">
+                            <label class="sr-only" for="Username">username</label>
+                            <input type="text" class="form-control" name="Username" id="Username" placeholder="Username" required />
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="Password">Password</label>
+                            <input type="password" class="form-control" name="Password" id="Password" placeholder="Password" required />
+                        </div>
+                   
+                           <button type="submit" class="btn btn-success">Login</button>
+                    </form>
+
+            {% endif %}
             </div>
+
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -168,11 +200,18 @@ a {
         </div>
         <div class="col-md-3" style="background-color: black;margin-right:30px;width: 30%">
             <h1>Event</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> <button type="button" class="btn btn-default btn-sm" style="border-radius: 30px">
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </button>
         </div>
         <div class="col-md-3" style="background-color: black;margin-right: 30px;width: 32%">
             <h1>Event</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> <a href="   ">
+                <!--  <button type="button" class="btn btn-default btn-sm" style="border-radius: 30px">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                </button> -->
+                <p style="border">more info</p>
+            </a>
         </div>
     </div>
     <br>
@@ -200,5 +239,18 @@ $(function() {
         }
     });
 });
+
+$('#cancel').click(function() 
+{ 
+  if ($(this).text() == "Login") 
+  { 
+     $(this).text("Cancel"); 
+  } 
+  else 
+  { 
+     $(this).text("Login"); 
+  }; 
+});
+
 </script>
 {% endblock script %}
