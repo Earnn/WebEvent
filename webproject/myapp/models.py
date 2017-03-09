@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.forms import ModelForm, Textarea,TextInput
+from django.contrib.auth.models import User
 # Create your models here.
 class Person(models.Model):
 	"""docstring for Person"""
@@ -17,7 +18,7 @@ class Image(models.Model):
 class Event(models.Model):	
 	"""docstring for Event"""
 	title=models.CharField(max_length=200,blank=False,null=False,default="")
-	name=models.CharField(max_length=200,blank=False,null=False)
+	username= models.ForeignKey(User,null=True)
 	content=models.CharField(max_length=1000,blank=False,null=False)
 	pic=models.ImageField(upload_to="images/",default="")
 	created_event = models.DateTimeField(auto_now_add=True)
@@ -36,11 +37,11 @@ class UploadForm(ModelForm):
 			"title",
 			"content",
 			"pic",
-			"name"
+			
         ]
        	widgets = {
             'content': Textarea(attrs={'cols': 70, 'rows': 10}),
             'title': TextInput(attrs={'class': 'form-control'}),
-            'name': TextInput(attrs={'class': 'form-control'}),
+           
 
         }

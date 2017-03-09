@@ -62,11 +62,12 @@ def UploadImg(request):
         if event.is_valid():
             event.save() 
             print "success" 
+            print request.user.username
             return HttpResponseRedirect('/')
     else:
         event=UploadForm()
     images=Upload.objects.all()
-    return render(request,'addEvent.html',{'form':event,'images':images })	
+    return render(request,'addEvent.html',{'form':event,'images':images,'username': request.user.username})	
   
 
 def auth(request):
