@@ -9,21 +9,72 @@ from models import UploadForm,Upload
 from django.contrib.auth import authenticate, login,logout
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.context_processors import csrf
+from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 # Create your views here.
 def home(request):
+	image_list = Image.objects.all()
 	event_list = Event.objects.all()
-	print event_list;
-	return render(request, 'home.html', {
-			'event_list': event_list,
+	# if request.method=="POST":
+	# 	query = request.POST.get("q")
+	# 	print query
+	# 	if query :
+	# 		event_list = event_list.filter(
+	# 			Q(title__icontains = query)|
+	# 			Q(content__icontains = query)
+	# 			).distinct()
 			
+	# 		print "home"
+	# 		print event_list
+	# 	return HttpResponseRedirect('/search/%s/' % event_list)
+		# return HttpResponseRedirect(reverse('search.html', args=[query]))
+
+	
+	print event_list
+	print image_list
+	return render(request, 'home.html', 
+		{'event_list': event_list,'image_list' : image_list
+		})
 		
-			 })
 
 def base(request):
 	return render(request, 'base.html', {'key': "value" })
 
+def searchEvent(request):
+	queryset_list = Event.objects.all()
+	print queryset_list
 
-# def addEvent(request): 
+	query = request.GET.get("q")
+	if query:
+		queryset_list = queryset_list.filter(
+			Q(title__icontains = query) |
+			Q(content__icontains = query) 
+			).distinct()
+		# queryset_list = queryset_list.filter(title__icontains = query)
+	# results = BlogPost.objects.annotate(search=SearchVector('title', 'username', 'content','created_event'),
+	# 	).filter(search=your_search_query)
+	print queryset_list
+	return render(request, 'search.html', {
+			'results_search': queryset_list,
+			 })
+
+
+# def searchEvent(request):
+#     queryset = Event.objects.all()
+#     paginator = Paginator(queryset, 5) # Show 25 contacts per page
+
+#     page = request.GET.get('page')
+
+#     print queryset
+#     contacts = {
+#     "object_list":queryset,
+#     "title": "List",
+#     }
+
+#     return render(request, 'search.html', {'contacts': contacts})
+	# def addEvent(request): 
 # 	if request.method == 'POST':
 # 		img = UploadForm(request.POST, request.FILES)
 # 		if img.is_valid():

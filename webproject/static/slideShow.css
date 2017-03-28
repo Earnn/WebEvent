@@ -18,7 +18,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.40);
+    /*background-color: rgba(0, 0, 0, 0.40);*/
 }
 .bs-slider > .carousel-inner > .item > img,
 .bs-slider > .carousel-inner > .item > a > img {
@@ -29,37 +29,6 @@
 /********************
 *****Slide effect
 **********************/
-
-.fade {
-    opacity: 1;
-}
-.fade .item {
-    top: 0;
-    z-index: 1;
-    opacity: 0;
-    width: 100%;
-    position: absolute;
-    left: 0 !important;
-    display: block !important;
-    -webkit-transition: opacity ease-in-out 1s;
-    -moz-transition: opacity ease-in-out 1s;
-    -ms-transition: opacity ease-in-out 1s;
-    -o-transition: opacity ease-in-out 1s;
-    transition: opacity ease-in-out 1s;
-}
-.fade .item:first-child {
-    top: auto;
-    position: relative;
-}
-.fade .item.active {
-    opacity: 1;
-    z-index: 2;
-    -webkit-transition: opacity ease-in-out 1s;
-    -moz-transition: opacity ease-in-out 1s;
-    -ms-transition: opacity ease-in-out 1s;
-    -o-transition: opacity ease-in-out 1s;
-    transition: opacity ease-in-out 1s;
-}
 
 
 
@@ -87,7 +56,7 @@
     border-radius: 100px;
 }
 .control-round:hover .carousel-control{
-    opacity: 1;
+  /*  opacity: 1;*/
 }
 .control-round .carousel-control.left {
     left: 1%;
@@ -97,7 +66,7 @@
 }
 .control-round .carousel-control.left:hover,
 .control-round .carousel-control.right:hover{
-    color: #fdfdfd;
+    /*color: #fdfdfd;*/
     background: rgba(0, 0, 0, 0.5);
     border: 0px transparent;
 }
@@ -153,12 +122,12 @@
 }
 .indicators-line > .carousel-indicators .active{
     margin: 1px 5px 1px 1px;
-    box-shadow: 0 0 0 2px #fff;
+    /*box-shadow: 0 0 0 2px #fff;*/
     background-color: transparent;
     position: relative;
-    -webkit-transition: box-shadow 0.3s ease;
+/*    -webkit-transition: box-shadow 0.3s ease;
     -moz-transition: box-shadow 0.3s ease;
-    -o-transition: box-shadow 0.3s ease;
+    -o-transition: box-shadow 0.3s ease;*/
     transition: box-shadow 0.3s ease;
     -webkit-transition: background-color 0.3s ease;
     -moz-transition: background-color 0.3s ease;
@@ -176,10 +145,10 @@
     width:15px;
     height: 15px;
     border-radius: 50%;
-    -webkit-transition: background-color 0.3s ease;
+    /*-webkit-transition: background-color 0.3s ease;
     -moz-transition: background-color 0.3s ease;
     -o-transition: background-color 0.3s ease;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;*/
 }
 
 

@@ -18,7 +18,7 @@ class Image(models.Model):
 class Event(models.Model):	
 	"""docstring for Event"""
 	title=models.CharField(max_length=200,blank=False,null=False,default="")
-	username= models.ForeignKey(User,null=True)
+	username= models.ForeignKey(User,null=False)
 	content=models.CharField(max_length=1000,blank=False,null=False)
 	pic=models.ImageField(upload_to="images/",default="")
 	created_event = models.DateTimeField(auto_now_add=True)

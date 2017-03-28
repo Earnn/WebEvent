@@ -14,15 +14,111 @@
 <style>
 body,
 html {
-    background: #030321;
+    /*background: #656372;*/
+    background: #BAA78E;
     /*font-family: Arial;*/
 }
 
 a {
-    font-size: 20px;
+    font-size: 17px;
 }
-p{
-     font-size: 20px;
+
+p {
+    font-size: 13px;
+    color: #B9A88E;
+    font-weight: bold;
+}
+
+h1 {
+    color: #5F2FF3;
+}
+
+h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #121D33;
+}
+
+#navText {
+    color: white;
+}
+
+#navTextBrand {
+    color: white;
+    /*font-weight: bold;*/
+    font-size: 20px;
+    /*text-align: right;*/
+    margin-left: -120px;
+}
+body {
+    background: url(http://subtlepatterns.com/patterns/scribble_light.png);
+}
+
+#wrapper {
+    width: 90%;
+    max-width: 1100px;
+    min-width: 800px;
+    margin: 50px auto;
+}
+
+#columns {
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+    -webkit-column-fill: auto;
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -moz-column-fill: auto;
+    column-count: 3;
+    column-gap: 15px;
+    column-fill: auto;
+}
+
+.pin {
+    display: inline-block;
+    background: #FEFEFE;
+    border: 2px solid #FAFAFA;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 2px 15px;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    padding: 15px;
+    padding-bottom: 5px;
+    background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+    opacity: 1;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.pin img {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+}
+
+.pin p {
+    font: 12px/18px Arial, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+@media (min-width: 960px) {
+    #columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media (min-width: 1100px) {
+    #columns {
+        -webkit-column-count: 5;
+        -moz-column-count: 5;
+        column-count: 5;
+    }
 }
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -33,114 +129,79 @@ p{
         Text Align: slide_style_center, slide_style_left, slide_style_right
         Add Text Animation: https://daneden.github.io/animate.css/
         -->
-<div id="bootstrap-touch-slider" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
-        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
-        <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
     </ol>
-    <!-- Wrapper For Slides -->
+    <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <!-- Third Slide -->
         <div class="item active">
-            <!-- Slide Background -->
-            <img src="https://images.pexels.com/photos/48726/pexels-photo-48726.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider" class="slide-image" />
-            <div class="bs-slider-overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <!-- Slide Text Layer -->
-                    <div class="slide-text slide_style_left">
-                        <h1 data-animation="animated zoomInRight">Bootstrap Carousel</h1>
-                        <p data-animation="animated fadeInLeft">Bootstrap carousel now touch enable slide.</p>
-                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
-                        <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>
-                    </div>
-                </div>
+            <img src="/media/images/file_name.jpg" width="100%" height="100%">
+            <div class="carousel-caption">
             </div>
         </div>
-        <!-- End of Slide -->
-        <!-- Second Slide -->
+        {% for fimage in image_list %}
         <div class="item">
-            <!-- Slide Background -->
-            <img src="https://images.pexels.com/photos/207990/pexels-photo-207990.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider" class="slide-image" />
-            <div class="bs-slider-overlay"></div>
-            <!-- Slide Text Layer -->
-            <div class="slide-text slide_style_center">
-                <h1 data-animation="animated flipInX">Bootstrap touch slider</h1>
-                <p data-animation="animated lightSpeedIn">Make Bootstrap Better together.</p>
-                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">select one</a>
-                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">select two</a>
+            <img src="{{fimage.image.url}}" style="height: 50%" width="100%" height="50%">
+            <div class="carousel-caption">
+                <p>{{fimage.images.url}}</p>
+                <!--   <h3>Chania</h3>
+                <p>The atmosphere in Chania has a touch of Florence and Venice.</p> -->
             </div>
         </div>
-        <!-- End of Slide -->
-        <!-- Third Slide -->
-        <div class="item">
-            <!-- Slide Background -->
-            <img src="https://images.pexels.com/photos/144345/pexels-photo-144345.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Bootstrap Touch Slider" class="slide-image" />
-            <div class="bs-slider-overlay"></div>
-            <!-- Slide Text Layer -->
-            <div class="slide-text slide_style_right">
-                <h1 data-animation="animated zoomInLeft">Beautiful Animations</h1>
-                <p data-animation="animated fadeInRight">Lots of css3 Animations to make slide beautiful .</p>
-                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">select one</a>
-                <a href="http://bootstrapthemes.co/" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">select two</a>
-            </div>
-        </div>
-        <!-- End of Slide -->
+        {% endfor %}
     </div>
-    <!-- End of Wrapper For Slides -->
-    <!-- Left Control -->
-    <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
-        <span class="fa fa-angle-left" aria-hidden="true"></span>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <!-- Right Control -->
-    <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
-        <span class="fa fa-angle-right" aria-hidden="true"></span>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
 </div>
-<!-- End  bootstrap-touch-slider Slider -->
-<!-- end carousel -->
-<!-- <div style="background-color: black" class="container-fluid"> -->
-<!-- Second navbar for categories -->
-<!-- Second navbar for search -->
-<!-- Second navbar for sign in -->
-<nav class="navbar navbar-inverse" style="border-radius: 0;background-color: black">
+<nav class="navbar navbar-inverse" style="border-radius: 0;background-color: #B0222E;border-color: #B0222E">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <div class="navbar-header"><a id="navTextBrand" class="navbar-brand" href="#">Thammasat U.</a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            </button>  
+            <!-- <img src="media/images/Logo-TU-3D-PNG-fromAPINANT.png" style="width: 50px;height: 50px;border-color: white"> -->
+          <!-- <a id="navText" class="navbar-brand" href="#">Thammasat U.</a> -->
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Works</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a id="navText" href="#">Home</a></li>
+                <li><a id="navText" href="#">About</a></li>
+                <li><a id="navText" href="#">Services</a></li>
+                <li><a id="navText" href="#">Works</a></li>
+                <li><a id="navText" href="#">News</a></li>
+                <li><a id="navText" href="#">Contact</a></li>
                 <li> {% if not user.is_authenticated %}
-                    <a id="cancel" class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse1" aria-expanded="false" aria-controls="nav-collapse2">Login</a> {% else %}
+                    <a id="cancel" class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse1" aria-expanded="false" aria-controls="nav-collapse2" style="color: white;border-color:white">Login</a> {% else %}
+                    <li><a id="navText">{{ user.username }}</a></li>
                     <form action="{% url 'logout' %}" class="navbar-form navbar-right form-inline" role="form">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <p style="color:white">{{ user.username }}</p>
-                        </div>
-                        <button type="submit" style="color: white" class="btn btn-default btn-outline btn-circle collapsed">Logout</button>
+                        <!-- <div class="form-group"> -->
+                        <!-- <a style="color:white"></a> -->
+                        <!-- </div> -->
+                        <button type="submit" style="color: white;margin-top: 3px;font-size: 15px;margin-bottom: -10px" class="btn btn-default btn-outline btn-circle collapsed" aria-expanded="false" aria-controls="nav-collapse2">Logout</button>
                     </form>
                     {% endif %}
                 </li>
             </ul>
-            <div style="background-color: black" class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse1">
+            <div class="collapse nav navbar-nav nav-collapse slide-down" style="background-color:#B0222E;border-color: #B0222E" id="nav-collapse1">
                 {% if not user.is_authenticated %}
                 <form action="{% url 'auth' %}" method="post" class="navbar-form navbar-right form-inline" role="form">
                     {% csrf_token %}
@@ -161,25 +222,88 @@ p{
     </div>
     <!-- /.container -->
 </nav>
+<!-- End  bootstrap-touch-slider Slider -->
+<!-- end carousel -->
+<!-- <div style="background-color: black" class="container-fluid"> -->
+<!-- Second navbar for categories -->
+<!-- Second navbar for search -->
+<!-- Second navbar for sign in -->
 <!-- /.navbar -->
 <!-- </div> -->
 <!-- /.container-fluid <-->
-<div class="container">
-    <br>
-    <div class="row">
+<!-- <div class="container"> -->
+<!--   <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+            <form action=""  method="POST">{% csrf_token %}
+                <div class="form-group has-feedback">
+                    <label for="search" class="sr-only">Search</label>
+                    <input type="text" class="form-control" name="q" value="{{requset.GET.q}}" id="search" placeholder="search event">
+                   <button type="submit" value="search"> <span class="glyphicon glyphicon-search form-control-feedback"></span></button> 
+                </div>
+            </form>
+        </div>
+    </div> -->
+<!-- <form action="" method="POST">{% csrf_token %}
+    <input type="text" class="form-control" name="q" placeholder="search event">
+    <input type="submit" value="search">
+</form> -->
+<!-- </div> -->
+<!-- <div class="container"> -->
+<div id="wrapper">
+    <div id="columns">
+        <br>
+        <!-- <div class="row"> -->
         {% for event in event_list %}
-        <div class="col-md-3" style="background-color: black;margin-right: 30px;width: 30%;margin-bottom: 20px">
-        <a href="/event/{{event.pk}}" class="thumbnail"></a>
-            <h1>{{event.title}}</h1>
-            <center><img src="{{ event.pic.url }}" height="250" width="320"></center>
-           <br> <p>{{event.content}}</p>
+        <!-- margin-right: 5px;width: 30%;height:    auto; margin-bottom: 20px;margin-left: 25px;" -->
+        <div class="pin">
+            <!-- <a href="/event/{{event.pk}}">edit event  </a> -->
+            <!--     <br> -->
+            <img src="{{ event.pic.url }}">
+            <br>
+            <h3>{{event.title}}</h3>
+            <br>
+            <br>
+            <p> <span style="color: #FE6D50" aria-hidden="true"><i class="fa fa-clock-o" aria-hidden="true"></i></span> {{event.content}}</p>
+            <p> <span style="color: #FE6D50" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{event.username}}</p>
             <a href="">
                 <p style="border">more info</p>
             </a>
         </div>
-
         {% endfor %}
-       <!--  <div class="col-md-3" style="background-color: black;margin-right:30px;width: 30%">
+        
+               
+ {% for event in event_list %}
+        <!-- margin-right: 5px;width: 30%;height:    auto; margin-bottom: 20px;margin-left: 25px;" -->
+        <div class="pin">
+            <!-- <a href="/event/{{event.pk}}">edit event  </a> -->
+            <!--     <br> -->
+            <img src="{{ event.pic.url }}">
+            <br>
+            <h3>{{event.title}}</h3>
+            <br>
+            <br>
+            <p> <span style="color: #FE6D50" aria-hidden="true"><i class="fa fa-clock-o" aria-hidden="true"></i></span> {{event.content}}</p>
+            <p> <span style="color: #FE6D50" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{event.username}}</p>
+            <a href="">
+                <p style="border">more info</p>
+            </a>
+        </div>
+        {% endfor %} 
+        <!--  <div class="col-md-2" style="background-color: #F5F5F5;margin-right: 10px">
+
+            <br>
+            <img src="/media/images/ff.jpg" height="100%" width="100%">
+            <br>
+            <h3>{{event.title}}</h3>
+            <br>
+            <br>
+            <p> <span style="color: #FE6D50" aria-hidden="true"><i class="fa fa-clock-o" aria-hidden="true"></i></span> {{event.content}}</p>
+            <p> <span style="color: #FE6D50" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{event.username}}</p>
+            <a href="">
+                <p style="border">more info</p>
+            </a>
+        </div> -->
+        <!--  <div class="col-md-3" style="background-color: black;margin-right:30px;width: 30%">
             <h1>Event</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             <button type="button" class="btn btn-default btn-sm" style="border-radius: 30px">
@@ -190,9 +314,103 @@ p{
             <h1>Event</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </div> -->
+        <!-- </div> -->
+     
     </div>
-    <br>
-    <br>
+</div>
+<div id="wrapper">
+    <div id="columns">
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/2/2v3VhAp.png" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat consectetur pellentesque. Nam ac elit risus, ac blandit dui. Duis rutrum porta tortor ut convallis. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+            <p>
+                Donec a fermentum nisi.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/6/6f3nXse.png" />
+            <p>
+                Nullam eget lectus augue. Donec eu sem sit amet ligula faucibus suscipit. Suspendisse rutrum turpis quis nunc convallis quis aliquam mauris suscipit.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/8/8kEc1hS.png" />
+            <p>
+                Nullam eget lectus augue. Donec eu sem sit amet ligula faucibus suscipit. Suspendisse rutrum turpis quis nunc convallis quis aliquam mauris suscipit.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+            <p>
+                Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/6/6f3nXse.png" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat consectetur pellentesque. Nam ac elit risus, ac blandit dui. Duis rutrum porta tortor ut convallis. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/2/2v3VhAp.png" />
+            <p>
+                Nullam eget lectus augue. Donec eu sem sit amet ligula faucibus suscipit. Suspendisse rutrum turpis quis nunc convallis quis aliquam mauris suscipit. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+            <p>
+                Nullam eget lectus augue.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/8/8kEc1hS.png" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat consectetur pellentesque.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/2/2v3VhAp.png" />
+            <p>
+                Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue. Suspendisse id nulla ac urna vestibulum mattis. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+            <p>
+                Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue. Suspendisse id nulla ac urna vestibulum mattis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/6/6f3nXse.png" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat consectetur pellentesque. Nam ac elit risus, ac blandit dui. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/2/2v3VhAp.png" />
+            <p>
+                Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue. Suspendisse id nulla ac urna vestibulum mattis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/1/1swi3Qy.png" />
+            <p>
+                Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue. Suspendisse id nulla ac urna vestibulum mattis.
+            </p>
+        </div>
+        <div class="pin">
+            <img src="http://cssdeck.com/uploads/media/items/6/6f3nXse.png" />
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat consectetur pellentesque. Nam ac elit risus, ac blandit dui. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+    </div>
 </div>
 {% endblock content %} {% block script %}
 <script type="text/javascript">

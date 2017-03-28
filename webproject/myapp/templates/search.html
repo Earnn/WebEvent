@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<!-- {# Each "contact" is a Contact model object. #} -->
+<div class="container">
+    <br>
+    <form action="" method="GET">
+        <input type="text" class="form-control" value="{{request.GET.q}}" name="q" placeholder="search event">
+        <input type="submit" value="search">
+    </form>
+    {% for event in results_search %}
+    <div class="col-md-3" style="background-color: black;margin-right: 5px;width: 30%;height:    auto; margin-bottom: 20px;margin-left: 25px;">
+        <a href="/event/{{event.pk}}">edit event  </a>
+        <h1>{{event.title}}</h1>
+        <center><img src="{{ event.pic.url }}" height="250" width="320"></center>
+        <br>
+        <p>{{event.content}}</p>
+        <a href="">
+            <p style="border">more info</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span> {% if contacts.has_next %}
+    <a href="?page={{ contacts.next_page_number }}">next</a> {% endif %}
+    </span>
+</div>
+{% endblock content %} {% block script %} {% endblock script %}

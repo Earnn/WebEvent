@@ -21,9 +21,10 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^addEvent/$', views.UploadImg, name='imageupload'),
     url(r'^event/(?P<pk>[0-9]+)$', views.UpdateEventView.as_view()),
-    url(r'^person_list/$', views.ListEventView.as_view(), name='person_list'),
+    url(r'^event_list/$', views.ListEventView.as_view(), name='event_list'),
     url(r'^login/', views.auth, name='auth'),
     url(r'^logout/', views.log_out, name='logout'),
+    url(r'^search', views.searchEvent, name='search'),
 ]
 
 from django.conf import settings
