@@ -1,16 +1,4 @@
 {% extends "base.html" %} {% block content %}
-<!-- carousel -->
-<!-- <div id="wrapper">
-    <div id="carousel">
-        {% for fimage in image_list %}
-        <img src="{{ fimage.image.url }}" height="990" width="450">
-  
-        {% endfor %}
-    </div>
-    <a href="#" id="prev" title="Show previous"> </a>
-    <a href="#" id="next" title="Show next"> </a>
-    <div id="pager"></div>
-</div> -->
 <style>
 body,
 html {
@@ -47,11 +35,16 @@ h3 {
     color: white;
     /*font-weight: bold;*/
     font-size: 20px;
-    /*text-align: right;*/
-    margin-left: -120px;
+    margin-left: 10px;
 }
+
 body {
     background: url(http://subtlepatterns.com/patterns/scribble_light.png);
+}
+
+#moredetails {
+    /*color: #B0222E;*/
+    color: #FE6D50;
 }
 
 #wrapper {
@@ -123,12 +116,6 @@ body {
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
-<!--  
-        If you want to change #bootstrap-touch-slider id then you have to change Carousel-indicators and Carousel-Control  #bootstrap-touch-slider slide as well
-        Slide effect: slide, fade
-        Text Align: slide_style_center, slide_style_left, slide_style_right
-        Add Text Animation: https://daneden.github.io/animate.css/
-        -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -175,15 +162,15 @@ body {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>  
+            </button>
             <!-- <img src="media/images/Logo-TU-3D-PNG-fromAPINANT.png" style="width: 50px;height: 50px;border-color: white"> -->
-          <!-- <a id="navText" class="navbar-brand" href="#">Thammasat U.</a> -->
+            <!-- <a id="navText" class="navbar-brand" href="#">Thammasat U.</a> -->
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right">
                 <li><a id="navText" href="#">Home</a></li>
-                <li><a id="navText" href="#">About</a></li>
+                <li><a id="navText" href="/addEvent">About</a></li>
                 <li><a id="navText" href="#">Services</a></li>
                 <li><a id="navText" href="#">Works</a></li>
                 <li><a id="navText" href="#">News</a></li>
@@ -251,7 +238,37 @@ body {
 <!-- <div class="container"> -->
 <div id="wrapper">
     <div id="columns">
-        <br>
+        {% if poll_list %} {% for poll in poll_list %}
+        <div class="pin" style="border-top-color:#B0222E ; border-width: 6px">
+<!--         <p>Poll</p> -->
+            <img src="/media/images/ff.jpg" height="100%" width="100%">
+            <h4>VOTE</h4>
+            <h3>{{ poll.question }}</h3> {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>{% endif %}
+            <form action="{% url 'polls:vote' poll.id %}" method="post">
+                {% csrf_token %} {% for choice in poll.choice_set.all %}
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                <br /> {% endfor %}
+                <input type="submit" value="Vote" />
+            </form>
+        </div>
+        {% endfor %} {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+         <div class="pin" >
+            <br>
+            <img src="/media/images/im1.jpg" height="100%" width="100%">
+            <br>
+            <h3>Forest Tour Event</h3>
+            <br>
+            <br>
+            <p> <span style="color: #FE6D50" aria-hidden="true"><i class="fa fa-clock-o" aria-hidden="true"></i></span> Khon Kaen   </p>
+            <p> <span style="color: #FE6D50" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{event.username}}</p>
+            <a href="">
+                <p style="border">more info</p>
+            </a>
+        </div>
         <!-- <div class="row"> -->
         {% for event in event_list %}
         <!-- margin-right: 5px;width: 30%;height:    auto; margin-bottom: 20px;margin-left: 25px;" -->
@@ -266,13 +283,10 @@ body {
             <p> <span style="color: #FE6D50" aria-hidden="true"><i class="fa fa-clock-o" aria-hidden="true"></i></span> {{event.content}}</p>
             <p> <span style="color: #FE6D50" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{event.username}}</p>
             <a href="">
-                <p style="border">more info</p>
+                <p id="moredetails" style="border">more info</p>
             </a>
         </div>
-        {% endfor %}
-        
-               
- {% for event in event_list %}
+        {% endfor %} {% for event in event_list %}
         <!-- margin-right: 5px;width: 30%;height:    auto; margin-bottom: 20px;margin-left: 25px;" -->
         <div class="pin">
             <!-- <a href="/event/{{event.pk}}">edit event  </a> -->
@@ -285,11 +299,12 @@ body {
             <p> <span style="color: #FE6D50" aria-hidden="true"><i class="fa fa-clock-o" aria-hidden="true"></i></span> {{event.content}}</p>
             <p> <span style="color: #FE6D50" class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{event.username}}</p>
             <a href="">
-                <p style="border">more info</p>
+                <p id="moredetails" style="border">more info</p>
             </a>
         </div>
-        {% endfor %} 
-        <!--  <div class="col-md-2" style="background-color: #F5F5F5;margin-right: 10px">
+        {% endfor %}
+       
+        <!--      <div class="col-md-2" style="background-color: #F5F5F5;margin-right: 10px">
 
             <br>
             <img src="/media/images/ff.jpg" height="100%" width="100%">
@@ -315,7 +330,6 @@ body {
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </div> -->
         <!-- </div> -->
-     
     </div>
 </div>
 <div id="wrapper">

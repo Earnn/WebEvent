@@ -30,7 +30,10 @@ label {
 form {
     width: 100%;
     /*margin-left:  70px;*/
+}body {
+    background: url(http://subtlepatterns.com/patterns/scribble_light.png);
 }
+
 </style>
 <div class="container">
     <h1>Add Your Event</h1>
@@ -40,35 +43,188 @@ form {
         {% csrf_token %}
         <div class="row">
             <div class="col-md-1"> </div>
-            <div class="col-md-5">
-                <!-- <div class="container"> -->
-                <div class="form-group ">
-                    <label>Title</label>
-                    {{ form.title }}
+           
+             <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group ">
+                        <label>Title</label>
+                        {{ form.title }}
+                    </div>     
+            </div>               
+         
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1"> </div>
+           
+                <div class="col-md-6">
+        
+                <div class="row">
+                        <label for="example-email-input">Message</label>
+                        <div class="form-group ">
+                            {{ form.content }}
+                        </div>        
+                    </div>        
+         
                 </div>
+            </div>
+       
+         
+            <div class="row">
+                <div class="col-md-1"> </div>
+           
+                <div class="col-md-6">
+        
+                    <div class="row">
+                        <div class="checkbox">
+                            <label> <input class="question" type="checkbox" name="coupon_question" value="1" onchange="valueChanged()"/>vote</label>
+                        </div>
+           
+                    </div>        
+         
+                </div>
+            </div>
+
      
-                <div class="form-group">
-                    <label>Upload Image</label>
-                    {{ form.pic }}
+            <div class="choice" style="display:none">
+
+      
+                <div class="row">
+                    <div class="col-md-1"> </div>
+                        <div class="col-md-1">                           
+                            <label>Title</label> 
+                        </div>                            
+                        <div class="col-md-5">
+                            <label >{{ poll.question}}</label>
+                            
+                            <hr>
+                        </div>          
+                </div> 
+
+                <div class="row">
+                    <div class="col-md-1"></div>   
+                    <div class="col-md-1">                           
+                        <p for="c" class="control-label">choice 1</p>
+                    </div>
+                    <div class="col-md-5">
+                        <label>{{ choices.0.choice_text}}</label> 
+                    </div>   
+                </div>   
+                <div class="row">
+                    <div class="col-md-1"></div>   
+                    <div class="col-md-1">                           
+                        <p for="c" class="control-label">choice 2</p>
+                    </div>
+                    <div class="col-md-5">
+                        <label>{{ choices.1.choice_text}}</label>  
+                    </div>   
+                   
                 </div>
-                <div class="form-group">
-                    <label>Name</label>
-                    {{ username }}
+                <div class="row">
+                    <div class="col-md-1"></div>   
+                    <div class="col-md-1">                           
+                        <p for="c" class="control-label">choice 3</p>
+                    </div>
+                    <div class="col-md-5">
+                        <label>{{ choices.2.choice_text}}</label>  
+                    </div>   
+                   
+                </div> 
+                <div class="row">
+                    <div class="col-md-1"></div>   
+                    <div class="col-md-1">                           
+                        <p for="c" class="control-label">choice 4</p>
+                    </div>
+                    <div class="col-md-5">
+                        <label>{{ choices.3.choice_text}}</label>  
+                    </div>   
+                   
+                </div> 
+<!-- 
+                <script>
+                   
+                        var x = document.getElementById("titleId").value;
+                        document.getElementById("demo").innerHTML = x;
+                    
+                </script> -->
+
+
+
+
+
+            </div>                                                     
+                                
+                                        
+                     
+                    <script type="text/javascript">
+                  
+                    function valueChanged()
+                    {
+                        if($('.question').is(":checked"))   
+                            $(".choice").show();
+                        else
+                            $(".choice").hide();
+                    }
+                    </script>
+                    
+                   
+
+
+<br>
+
+
+            <div class="row">
+                <div class="col-md-1"> </div>
+           
+                <div class="col-md-6">
+          <div class="row">
+                        <div class="form-group">
+                        <label>Upload Image</label>
+                        {{ form.pic }}
+                    </div>
+          </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <!-- <div class="container"> -->
-                <label for="example-email-input">Message</label>
-                <div class="form-group ">
-                    {{ form.content }}
-                    <!-- </div> -->
+            
+            <div class="row">
+                <div class="col-md-1"> </div>
+           
+                <div class="col-md-6">
+                 <div class="row">
+                   <div class="form-group">
+                        <label>Name</label>
+                        {{ username }}
+                    </div>
                 </div>
             </div>
-        </div>
-        <center>
-            <input type="submit" class="btn btn-default" value="Upload" />
-        </center>
+             </div>
+
+
+              <div class="row">
+                <div class="col-md-1"> </div>
+           
+                <div class="col-md-6">
+                 <div class="row">
+                         <input type="submit" class="btn btn-default" value="Upload" />
+                </div>
+            </div>
+             </div>
+
+            
+                  
+
+              
+
+            
+            
+       
        
     </form>
+    <br>
+    <br>
 </div>
 {% endblock content %} {% block script %} {% endblock script %}
+
+
+

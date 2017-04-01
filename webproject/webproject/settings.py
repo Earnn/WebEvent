@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_extensions',
     'myapp',
+    'polls'
+    
 ]
 
 MEDIA_URL = '/media/'
